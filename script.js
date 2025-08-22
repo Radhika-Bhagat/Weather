@@ -16,9 +16,9 @@ feelsLikeVal = document.getElementById("feelsVal");
 
 
 function getWeatherDetails(name, lat, lon, country, state) {
-    let FORECAST_API_URL = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${api_key}`,
-    WEATHER_API_URL = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${api_key}`,
-    AIR_POLLUTION_API_URL = `http://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${api_key}`,
+    let FORECAST_API_URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${api_key}`,
+    WEATHER_API_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${api_key}`,
+    AIR_POLLUTION_API_URL = `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${api_key}`,
     days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
     months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
@@ -176,7 +176,7 @@ searchBtn.addEventListener("click", function() {
     let cityName = cityInput.value.trim();
     cityInput.value = "";
     if(!cityName) return;
-    let GEO_API_URL = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${api_key}`;
+    let GEO_API_URL = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${api_key}`;
     fetch(GEO_API_URL)
         .then(response => response.json())
         .then(data => {
@@ -189,7 +189,7 @@ locationBtn.addEventListener("click", function() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
             let {latitude, longitude} = position.coords;
-            let REVERSE_GEO_API_URL = `http://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=${api_key}`;
+            let REVERSE_GEO_API_URL = `https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=${api_key}`;
             fetch(REVERSE_GEO_API_URL)
                 .then(response => response.json())
                 .then(data => {
@@ -209,4 +209,5 @@ cityInput.addEventListener("keyup", e => {
 });
 window.onload = function() {
     locationBtn.click();
+
 };
